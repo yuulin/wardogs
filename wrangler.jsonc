@@ -1,0 +1,14 @@
+// Cloudflare Workers 静态资产站配置
+// html_handling=none：.html 文件按字面路径直出（与 sitemap 规范路径一致，不再 307）
+// 根路径与语言目录的 index 映射由 worker.js 接管
+{
+  "name": "wardogs",          // 必须与 Cloudflare Workers 项目名一致
+  "main": "worker.js",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "html_handling": "none",
+    "not_found_handling": "none"
+  }
+}
