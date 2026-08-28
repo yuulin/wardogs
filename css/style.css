@@ -41,6 +41,7 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  overflow-x: hidden; /* mobile fix: page must never scroll horizontally */
   display: flex;
   flex-direction: column;
 }
@@ -449,6 +450,12 @@ a:hover {
   border-radius: var(--radius-sm);
   overflow: hidden;
   box-shadow: var(--shadow-card);
+  /* mobile fix: wide decision tables scroll inside their own box
+     instead of stretching the whole page sideways */
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  word-wrap: break-word;
 }
 
 .data-table th, .data-table td {
