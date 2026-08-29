@@ -32,6 +32,17 @@
   margin: 0;
   padding: 0;
 }
+/* mobile fix: flex/grid children must be allowed to shrink below content size */
+.nav-wrap > *, .article-grid > *, .step-list > *, .article-hero-media figcaption > * {
+  min-width: 0;
+  max-width: 100%;
+}
+}
+
+html {
+  overflow-x: hidden; /* legacy fallback */
+  overflow-x: clip;   /* mobile fix: html+body pair required — body-only is ignored by touch-pan */
+}
 
 body {
   background-color: var(--bg);
@@ -41,7 +52,8 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  overflow-x: hidden; /* mobile fix: page must never scroll horizontally */
+  overflow-x: hidden; /* legacy fallback */
+  overflow-x: clip;   /* mobile fix: hard-block horizontal pan (html+body pair below) */
   display: flex;
   flex-direction: column;
 }
@@ -80,6 +92,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   height: 72px;
+  flex-wrap: wrap; /* mobile fix */
 }
 
 .site-logo {
@@ -237,7 +250,7 @@ a:hover {
 /* Article Grid & Cards */
 .article-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); /* mobile fix: min(320px,100%) — plain 320px overflows 360px phones */
   gap: 1.6rem;
   margin-bottom: 4rem;
 }
@@ -362,6 +375,8 @@ a:hover {
   color: var(--text-muted);
   border-top: 1px solid var(--border);
   display: flex;
+  flex-wrap: wrap;      /* mobile fix: long captions wrap instead of pushing width */
+  gap: 0.4rem 1rem;
   justify-content: space-between;
   align-items: center;
 }
