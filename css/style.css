@@ -623,3 +623,14 @@ a:hover {
   .footer-grid { grid-template-columns: 1fr; }
   .article-header h1 { font-size: 1.9rem; }
 }
+
+/* language dropdown (universal) */
+.lang-dropdown { position: relative; display: inline-block; margin-left: auto; flex-shrink: 0; }
+.lang-btn { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; font-size: 12.5px; letter-spacing: .4px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.22); border-radius: 6px; color: inherit; cursor: pointer; }
+.lang-btn:hover { background: rgba(255,255,255,0.16); }
+.lang-menu { display: none; position: absolute; right: 0; top: 100%; padding-top: 6px; z-index: 150; }
+.lang-menu-inner { background: #15171c; border: 1px solid rgba(255,255,255,0.22); border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.55); overflow: hidden; padding: 4px 0; min-width: 150px; }
+.lang-dropdown:hover .lang-menu, .lang-dropdown:focus-within .lang-menu { display: block; }
+.lang-menu a { display: block; padding: 7px 14px; font-size: 13px; text-decoration: none; color: inherit; opacity: .85; white-space: nowrap; }
+.lang-menu a:hover { background: rgba(255,255,255,0.09); opacity: 1; }
+.lang-menu a.on { opacity: 1; font-weight: 700; }
